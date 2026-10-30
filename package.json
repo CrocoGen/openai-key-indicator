@@ -1,0 +1,59 @@
+{
+	"name": "openai-key-indicator",
+	"displayName": "OpenAI Key Indicator",
+	"description": "Shows in the status bar whether Cursor's 'OpenAI API Key' toggle is on or off",
+	"version": "0.0.3",
+	"publisher": "beta",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/CrocoGen/openai-key-indicator.git"
+	},
+	"engines": {
+		"vscode": "^1.85.0"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "openai-key-indicator.refresh",
+				"title": "OpenAI Key Indicator: Refresh"
+			},
+			{
+				"command": "openai-key-indicator.toggleAndRefresh",
+				"title": "OpenAI Key Indicator: Toggle OpenAI API Key"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "openai-key-indicator.toggleAndRefresh",
+				"key": "ctrl+alt+0",
+				"mac": "cmd+alt+0"
+			}
+		],
+		"configuration": {
+			"title": "OpenAI Key Indicator",
+			"properties": {
+				"openaiKeyIndicator.pollIntervalMs": {
+					"type": "number",
+					"default": 30000,
+					"description": "How often (ms) to re-read the toggle state. Ctrl+Alt+0 refreshes within about a second; this interval is only the fallback."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"build": "esbuild src/extension.js --bundle --platform=node --external:vscode --external:node:sqlite --outfile=dist/extension.js",
+		"package": "npm run build && vsce package --no-dependencies"
+	},
+	"devDependencies": {
+		"esbuild": "^0.24.0",
+		"@vscode/vsce": "^3.2.0"
+	}
+}
