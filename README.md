@@ -17,7 +17,9 @@ The extension reads the toggle from Cursor's local state. It does not send the A
 
 The status bar shows `OpenAI Key: ON` or `OpenAI Key: OFF`. OFF uses the warning color.
 
-![OpenAI API Key toggle is off](screenshot.png)
+![OpenAI API Key toggle is off](screenshot-off.png)
+
+![OpenAI API Key toggle is on](screenshot-on.png)
 
 `Ctrl+Alt+0` (`Cmd+Alt+0` on macOS) toggles the switch and refreshes the label. That runs Cursor's command `aiSettings.usingOpenAIKey.toggle` ("Toggle OpenAI key"). Cursor binds the same command to `Ctrl+Shift+0` by default. The command toggles only when an API key is already saved. An empty key field opens the API key popup.
 
